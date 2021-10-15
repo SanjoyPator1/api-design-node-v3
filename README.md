@@ -1,9 +1,10 @@
-# Course Code for [API design in Node.js with Express, v3](https://frontendmasters.com/courses/api-design-nodejs-v3/)
+# API design in Node.js with Express, v3
 > Scott Moss & Frontend Masters
 
 - [Resources](#resources)
+- [Requirements](#requirements)
 - [Course](#course)
-- [Exercises](#excercises)
+- [Exercises](#exercises)
   - [Hello world Express](#hello-world-express)
   - [Routing](#routing)
   - [Create Schemas](#create-schemas)
@@ -12,19 +13,33 @@
   - [Testing](#testing)
 
 ## Resources
-* [Slides](https://slides.com/scotups/api-design-in-node-with-express-v3/)
+* [Slides](https://slides.com/scotups/api-design-in-node-with-express-v3)
 * [Nodejs](https://nodejs.org/en/)
 * [Express](https://expressjs.com/)
 * [MongoDB](https://www.mongodb.com/)
 
+## Suggested Tools
+The following are suggested to be installed on your machine before beginning the course
+* [VSCode](https://code.visualstudio.com/)
+* [Nodejs](https://nodejs.org/en/)
+* [Yarn](https://yarnpkg.com/lang/en/docs/install/)
+* [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+* [Insomnia](https://insomnia.rest/)
+* [Nodemon](https://nodemon.io/)
+
 ## Course
-This course has two parts, slides and excercises. The slides describe the excerices in detail. Each excercise has a starting branch and solution branch. Example `lesson-1` and `lesson-1-solution`.
+This course has two parts, slides and exercises. The slides describe the exerices in detail. Each exercise has a starting branch and solution branch. Example `lesson-1` and `lesson-1-solution`.
 ## Exercises
+** Important: Please check out to each exercise branch as the course progresses. 
+
 ### Hello world Express
+
+Note: Before running the tests for the exercise, ensure that mongoDB is running. Please run `mongo` in a new terminal.
+
 * branch - `lesson-1`
 
 In this lesson you'll be creating a simple Express based API in node, just to get your feet wet.
-- [ ] install dependencies with yarn (prefered for version locking) or npm
+- [ ] install dependencies with yarn (preferred for version locking) or npm
 - [ ] create a route that sends back some json
 - [ ] create a route that accepts json and logs it
 - [ ] start the server
@@ -73,4 +88,4 @@ In this exercise you'll be locking down our API using JWT's.
 - [ ] ensure all tests pass by running test command
 
 ### Testing
-THe other resources don't have any test, go ahead and write some!
+The other resources don't have any test, go ahead and write some!

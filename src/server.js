@@ -1,13 +1,7 @@
 import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
-import config from './config'
 import cors from 'cors'
-import { signup, signin, protect } from './utils/auth'
-import { connect } from './utils/db'
-import userRouter from './resources/user/user.router'
-import itemRouter from './resources/item/item.router'
-import listRouter from './resources/list/list.router'
 
 export const app = express()
 
@@ -18,21 +12,63 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-app.post('/signup', signup)
-app.post('/signin', signin)
+// SECTION 02 - EXPRESS
+// simple routes
+app.get('/d', (req, res) => {
+  res.send({ message: 'hello' })
+})
 
-app.use('/api', protect)
-app.use('/api/user', userRouter)
-app.use('/api/item', itemRouter)
-app.use('/api/list', listRouter)
+app.post('/d', (req, res) => {
+  console.log(req.body)
+  res.send({ message: 'ok' })
+})
 
-export const start = async () => {
-  try {
-    await connect()
-    app.listen(config.port, () => {
-      console.log(`REST API on http://localhost:${config.port}/api`)
-    })
-  } catch (e) {
-    console.error(e)
-  }
+// simple middleware
+const log = (req, res, next) => {
+  console.log('logging')
+  req.myData = 'middleware data'
+  next()
+}
+
+app.get('/middleware', [log, log, log], (req, res) => {
+  console.log('middleware api')
+  res.send({ data: req.myData })
+})
+
+// Routers and sub-routers
+const router = express.Router()
+router.get('/me', (req, res) => {
+  res.send({ me: 'hello' })
+})
+
+app.use('/api', router)
+
+// Router verb methods
+// const router1 = express.Router
+
+// router1
+//   .route('/cat')
+//   .get((req, res) => {
+//     res.send({ res: 'res from router1 /cat' })
+//   })
+//   .post((req, res) => {
+//     res.send({ res: 'res is' + req.body })
+//   })
+
+// router1
+//   .route('/cat/:id')
+//   .get((req, res) => {
+//     res.send({ res: 'res from router1 /cat:id' })
+//   })
+//   .put((req, res) => {
+//     res.send({ res: 'res from router1 /cat' + req.body })
+//   })
+//   .delete()
+
+// app.use('/api1', router1)
+
+export const start = () => {
+  app.listen(3000, () => {
+    console.log('server is started on 3000 port')
+  })
 }
