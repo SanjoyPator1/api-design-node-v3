@@ -15,7 +15,7 @@ router
 
 // /api/item/:id equivalent
 router
-  .route('/')
+  .route('/:id')
   .put(controller)
   .delete(controller)
   .get(controller)
